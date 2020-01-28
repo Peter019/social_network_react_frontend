@@ -37,7 +37,7 @@ class ProfTabs extends React.Component{
           <div className='container'>
               <div className='row ml-5'>
                   <div className='col-md-4'>
-                      <h4 className='text-primary'>Followers</h4>
+                      <h4 className='text-primary' style={{color:'#042651'}}>Followers</h4>
                       {user.followers.map((follower, i) => {
                           return <div key={i}>
                               <hr/>
@@ -50,7 +50,7 @@ class ProfTabs extends React.Component{
                                            alt={follower.name}
                                       />
                                       <div className='float-right mt-2'>
-                                          <h4>{follower.name}</h4>
+                                          <h4 style={{color:'#042651'}}>{follower.name}</h4>
                                       </div>
                                   </Link>
                               </div>
@@ -59,7 +59,7 @@ class ProfTabs extends React.Component{
                   </div>
 
                   <div className='col-md-4 '>
-                      <h4 className='text-primary'>Following</h4>
+                      <h4 className='text-primary' style={{color:'#042651'}}>Following</h4>
                       {user.following.map((follower, i) => {
                           return <div key={i}>
                               <hr/>
@@ -72,7 +72,7 @@ class ProfTabs extends React.Component{
                                            alt={follower.name}
                                       />
                                       <div className='float-right mt-2'>
-                                          <h4>{follower.name}</h4>
+                                          <h4 style={{color:'#042651'}}>{follower.name}</h4>
                                       </div>
                                   </Link>
                               </div>

@@ -58,6 +58,7 @@ class Posts extends  React.Component{
                              style={{width:'100%'}}/>
                         <p className='card-text'>{post.body}</p>
                     </div>
+                        <Link to={`/post/${post._id}`} className="btn btn-primary" style={{color:'#9370DB'}}>More</Link>
                 </div>
                 )
             })}

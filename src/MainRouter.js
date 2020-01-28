@@ -12,6 +12,8 @@ import FindPeople from "./user/FindPeople";
 import ProfTabs from "./user/ProfTabs";
 import NewPost from "./post/NewPost";
 import Welcome from './core/Welcome';
+import SinglePost from './post/SinglePost'
+
 const MainRouter =() =>{
     return(
     <div>
@@ -25,6 +27,7 @@ const MainRouter =() =>{
             <PrivRoute path='/users' component={ Users } />
             <PrivRoute path='/user/:userId' component={ Profile } />
             <PrivRoute path='/post/create' component={ NewPost } />
+            <PrivRoute path='/post/:postId' component={ SinglePost } />
             <Route path={'/welcome'} component={Welcome} />
             <Route path="/" component={Home} />
         </Switch>

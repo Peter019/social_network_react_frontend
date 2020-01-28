@@ -40,7 +40,7 @@ class Users extends  React.Component{
                         <div className="card-body">
                             <h5 className="card-title">{user.name}</h5>
                             <p className="card-text">{user.name}'s blog</p>
-                            <Link to={`/user/${user._id}`} className="btn btn-primary" style={{color:'#FFB6C1'}}>View profile</Link>
+                            <Link to={`/user/${user._id}`} className="btn btn-primary" style={{color:'#042651'}}>View profile</Link>
                         </div>
                 </div>
             })}

@@ -116,6 +116,7 @@ class Profile extends React.Component{
                                              style={{width:'100%'}}/>
                                         <p className='card-text'><h5>{post.body}</h5></p>
                                     </div>
+                                    <Link to={`/post/${post._id}`} className="btn btn-primary" style={{color:'#9370DB'}}>More</Link>
                                 </div>
 
                             )
