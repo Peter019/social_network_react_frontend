@@ -1,7 +1,9 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import {isAuthenticated} from "../auth";
-import { get_single_post } from './api_post_call'
+import { get_single_post,update_post } from './api_post_call'
+import Delete from './delete';
+
 class SinglePost extends React.Component {
 
     constructor(props){
@@ -38,9 +40,12 @@ class SinglePost extends React.Component {
                 <img src={`${process.env.REACT_APP_API_URL}/post/picture/${post._id}`}
                      alt={post.title} className='mb-3'
                      style={{width:'100%'}}/>
-                <p className='card-text'>{post.body}</p>
+                <p className='card-text'><h5>{post.body}</h5></p>
             </div>
-            <Link to={`/post/${post._id}`} className="btn btn-primary" style={{color:'#9370DB'}}>More</Link>
+                <div className='d inline block'>
+                    <button className="btn btn-primary" onClick={this.update_post}>Update post</button>
+                    <Delete postId={this.props.match.params.postId} />
+                </div>
         </div>
     );
 

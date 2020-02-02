@@ -51,3 +51,30 @@ export const get_single_post =(token,postId)=>{
     }).catch(err=>console.log(err))
 }
 
+export const update_post = (token,postId,post) =>{
+    return fetch(`${process.env.REACT_APP_API_URL}/post/${postId}`,{
+        method:"PUT",
+        headers:{
+            Accept:"application/json",
+            "Content-Type":"application/json",
+            Authorization:`Bearer ${token}`
+        },
+        body:post
+    }).then(response=>{
+        return response.json();
+    }).catch(err=>console.log(err))
+}
+
+export const delete_post = (token,postId) =>{
+    return fetch(`${process.env.REACT_APP_API_URL}/post/${postId}`,{
+        method:"DELETE",
+        headers:{
+            Accept:"application/json",
+            "Content-Type":"application/json",
+            Authorization:`Bearer ${token}`
+        }
+    }).then(response=>{
+        return response.json();
+    }).catch(err=>console.log(err))
+}
+

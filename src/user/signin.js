@@ -35,9 +35,9 @@ class Signin extends React.Component {
         }).catch(err => console.log(err));
     }
 
-    authenticate(res,next){
+    authenticate(jwt,next){
         if(typeof window !== "undefined"){
-            localStorage.setItem("jwt&user", JSON.stringify(res))
+            localStorage.setItem("jwt&user", JSON.stringify(jwt))
             next();
         }
     }

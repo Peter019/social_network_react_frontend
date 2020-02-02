@@ -2,9 +2,9 @@
     text-align: center;
 }
 .loader {
-    border: 16px solid #f3f3f3;
+    border: 16px solid #042651;
     border-radius: 50%;
-    border-top: 16px solid #9370DB;
+    border-top: 16px solid #ffffff;
     width: 120px;
     height: 120px;
     display: inline-block;
