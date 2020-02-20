@@ -28,11 +28,12 @@ class SinglePost extends React.Component {
     render(){
         const { post } = this.state;
         const author = post.postedBy ? post.postedBy.name : '';
-        const id = post.postedBy ? `/user/${post.postedBy._id}` : '';
+        const id_link = post.postedBy ? `/user/${post.postedBy._id}` : '';
+        const postId = this.props.match.params.postId;
         return(
             <div className="card col-md-10" style={{margin:'1%'}}>
             <div className='card-header'>
-                <Link to={id} className="btn btn-primary" style={{color:'#9370DB'}}>{author}</Link>
+                <Link to={id_link} className="btn btn-primary" style={{color:'#9370DB'}}>{author}</Link>
                 <div style={{float:'right'}}>{new Date(post.created).toDateString()}</div>
             </div>
             <div className="card-body">
@@ -42,10 +43,12 @@ class SinglePost extends React.Component {
                      style={{width:'100%'}}/>
                 <p className='card-text'><h5>{post.body}</h5></p>
             </div>
+
                 <div className='d inline block'>
-                    <button className="btn btn-primary" onClick={this.update_post}>Update post</button>
+                    <Link to={`/post/edit/${postId}`} className="btn btn-primary">Edit post </Link>
                     <Delete postId={this.props.match.params.postId} />
                 </div>
+
         </div>
     );
 

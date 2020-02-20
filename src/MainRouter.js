@@ -13,6 +13,7 @@ import ProfTabs from "./user/ProfTabs";
 import NewPost from "./post/NewPost";
 import Welcome from './core/Welcome';
 import SinglePost from './post/SinglePost'
+import {default as UpdatePost} from './post/update';
 
 const MainRouter =() =>{
     return(
@@ -26,6 +27,7 @@ const MainRouter =() =>{
             <PrivRoute path='/user/network/:userId' component={ ProfTabs } />
             <PrivRoute path='/users' component={ Users } />
             <PrivRoute path='/user/:userId' component={ Profile } />
+            <PrivRoute path='/post/edit/:postId' component={ UpdatePost } />
             <PrivRoute path='/post/create' component={ NewPost } />
             <PrivRoute path='/post/:postId' component={ SinglePost } />
             <Route path={'/welcome'} component={Welcome} />

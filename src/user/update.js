@@ -64,7 +64,7 @@ class Update extends React.Component{
             return false;
         }
         if(password.length >=1 && (password.length<8 || password.length>40)){
-            this.setState({error:"'Password must have between 8 and 40 long"})
+            this.setState({error:"'Password must have between 8 and 40 characters"})
             return false;
         }
         return true;
