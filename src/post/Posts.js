@@ -1,5 +1,5 @@
 import React from 'react';
-import { get_posts } from './api_post_call';
+import { get_posts,like,unlike } from './api_post_call';
 import { isAuthenticated } from '../auth/index';
 import defUser from '../images/user.png';
 import { Link } from 'react-router-dom';
@@ -12,7 +12,7 @@ class Posts extends  React.Component{
         this.state={
             posts:[],
             loading:false,
-            noposts:false
+            noposts:false,
         }
     }
 
@@ -27,6 +27,15 @@ class Posts extends  React.Component{
                 this.setState({posts:data,loading:false});
             }
         });
+    }
+
+    likeTrig = (id) =>{
+        let token = isAuthenticated().token;
+        let userId = isAuthenticated().user._id;
+        like(token,userId,id).then(data=>{
+            if(data.error) console.log(data.error);
+            console.log(data)
+        })
     }
 
     componentDidMount() {
@@ -58,7 +67,20 @@ class Posts extends  React.Component{
                              style={{width:'100%'}}/>
                         <p className='card-text'>{post.body}</p>
                     </div>
-                        <Link to={`/post/${post._id}`} className="btn btn-primary" style={{color:'#9370DB'}}>More</Link>
+                        <div className='d inline block'>
+                            <button className="btn btn-primary far fa-heart" onClick={function() {
+                                let apiCall = post.likes.includes(isAuthenticated().user._id) ? unlike : like;
+                                let token = isAuthenticated().token;
+                                let userId = isAuthenticated().user._id;
+                                let id = post._id;
+                                apiCall(token, userId, id).then(data => {
+                                    if (data.error) console.log(data.error);
+                                    post=data;
+                                })
+                            }}></button>
+                            {post.likes.length}
+                            <Link to={`/post/${post._id}`} className="btn btn-primary" style={{color:'#9370DB'}}>More</Link>
+                        </div>
                 </div>
                 )
             })}

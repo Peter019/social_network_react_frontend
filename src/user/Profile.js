@@ -6,7 +6,7 @@ import defUser from '../images/user.png';
 import Delete from './delete';
 import '../style/loader.css';
 import ProfTabs from './ProfTabs';
-import {get_prof_posts} from "../post/api_post_call";
+import {get_prof_posts, like, unlike} from "../post/api_post_call";
 import { renderPosts } from '../post/Posts';
 
 class Profile extends React.Component{
@@ -101,7 +101,7 @@ class Profile extends React.Component{
     }
 
     renderProfPosts =posts =>{
-        const {loading,noposts,showModal} = this.state;
+        const {loading,noposts} = this.state;
         return (
             loading ? <div className='load-container'> <div className='loader' ></div> </div> :
                 noposts ? <div className='jumbotron'><h2>No posts :(</h2></div> :
@@ -116,7 +116,20 @@ class Profile extends React.Component{
                                              style={{width:'100%'}}/>
                                         <p className='card-text'><h5>{post.body}</h5></p>
                                     </div>
-                                    <Link to={`/post/${post._id}`} className="btn btn-primary" style={{color:'#9370DB'}}>More</Link>
+                                    <div className='d inline block'>
+                                        <button className="btn btn-primary far fa-heart" onClick={function() {
+                                            let apiCall = post.likes.includes(isAuthenticated().user._id) ? unlike : like;
+                                            let token = isAuthenticated().token;
+                                            let userId = isAuthenticated().user._id;
+                                            let id = post._id;
+                                            apiCall(token, userId, id).then(data => {
+                                                if (data.error) console.log(data.error);
+                                                post=data;
+                                            })
+                                        }}></button>
+                                        {post.likes.length}
+                                        <Link to={`/post/${post._id}`} className="btn btn-primary" style={{color:'#9370DB'}}>More</Link>
+                                    </div>
                                 </div>
 
                             )

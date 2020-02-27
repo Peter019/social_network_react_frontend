@@ -18,7 +18,7 @@ class Delete extends React.Component{
         delete_post(token,postId)
             .then(data=>{
                 if(data.error){
-                    console.log(data.error)
+                    alert(data.error)
                 }else{
                     this.setState({
                         redirect:true
