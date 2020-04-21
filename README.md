@@ -1,3 +1,3 @@
 # social_network_react_frontend
 
-Social network frontend client built with React, connected to NodeJS API (both still under development, however big part of functionality is already implemented).
+Social network frontend client built with React, connected to NodeJS API.
